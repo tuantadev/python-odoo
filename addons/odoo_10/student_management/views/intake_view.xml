@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="intake_tree_view" model="ir.ui.view">
+            <field name="name">Intake Tree View</field>
+            <field name="model">intake</field>
+            <field name="arch" type="xml">
+                <tree string="Intake">
+                    <field name="code"/>
+                    <field name="name"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="intake_form_view" model="ir.ui.view">
+            <field name="name">Intake Form View</field>
+            <field name="model">intake</field>
+            <field name="arch" type="xml">
+                <form string="Intake">
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="code" required="1"/>
+                                <field name="name" required="1"/>
+                                <field name="subject_ids" widget="many2many_tags"/>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="intake_action" model="ir.actions.act_window">
+            <field name="name">Intake</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">intake</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <menuitem id="intake_menu_id" parent="student_mangement_menu_id"
+                  name="Intake" sequence="1" action="intake_action"/>
+    </data>
+</odoo>

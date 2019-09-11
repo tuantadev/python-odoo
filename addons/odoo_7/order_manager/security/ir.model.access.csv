@@ -1,0 +1,15 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_customer_employee,access.customer.employee,order_manager.model_customer,base.group_user,1,0,0,0
+access_orders_employee,access.orders.employee,order_manager.model_orders,base.group_user,1,0,0,0
+access_order_line_employee,access.order.line.employee,order_manager.model_order_line,base.group_user,1,0,0,0
+
+access_order_group,order_group1,model_orders,group_order,1,1,1,1
+access_order.line_group,order.line_group1,model_order_line,group_order,1,1,1,1
+
+access_customer_group,customer_group,model_customer,group_customer,1,1,1,1
+
+access_order_order_user,access.order.order.user,model_orders,group_order_user,1,0,0,0
+access_customer_customer,access.customer.customer.user,model_customer,group_customer_user,1,0,0,0
+
+
+

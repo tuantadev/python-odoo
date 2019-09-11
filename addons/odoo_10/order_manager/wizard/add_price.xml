@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record model="ir.ui.view" id="res_partner_comment_wizard">
+            <field name="name">Add Price</field>
+            <field name="model">add.price</field>
+            <field name="arch" type="xml">
+                <form string="Add Price">
+                    <group>
+                        <field name="price"/>
+                    </group>
+                    <footer>
+                        <button string="Ok"
+                            name="add_price" type="object" class="btn-primary"/>
+                        <button string="Cancel" class="btn-default" special="cancel" />
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+        <record id="action_res_partner_price_wizard" model="ir.actions.act_window">
+            <field name="name">Add Price</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">add.price</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+        </record>
+
+        <!-- Inherit Form View to Modify it -->
+        <record id="view_partner_form_inherit" model="ir.ui.view">
+            <field name="name">Add Button</field>
+            <field name="model">products</field>
+            <field name="inherit_id" ref="order_manager.product_form_view"/>
+            <field name="arch" type="xml">
+                <xpath expr="//form/sheet" position="before">
+                    <header>
+                        <button name="%(order_manager.action_res_partner_price_wizard)d"
+                                string="Add Price" class="oe_highlight" type="action"/>
+                    </header>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>

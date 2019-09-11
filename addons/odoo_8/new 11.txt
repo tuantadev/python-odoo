@@ -1,0 +1,35 @@
+1. Tao mot doi tuong 'CLB' voi nhung field nhu sau:
+	- name - chuan hoa (bat buoc nhap)
+	- nam thanh lap (bat buoc nhap)
+	- dia chi -> default='Ha Noi'
+	- cau_thu_ids - danh sach cac cau thu thuoc clb (khong cho nguoi dung sua danh sach cau thu o day)
+	- so luong cau thu dang co (tinh tu dong)
+	- huan luyen vien chinh
+	- trang thai (dang hoat dong - mac dinh, giai the)
+	- tao button giai the -> chuyen trang thai clb sang giai the, xoa quan he cua cau thu voi clb va chuyen sang trang thai tu do
+	- tao giao dien tree view, form view cho 'CLB' (o form view phai hien thi duoc ds cau thu)
+	- khi them cau thu moi vao 'clb' chi duoc chon nhung cau thu co trang thai 'tu do'
+	
+	
+2. Tao mot doi tuong 'Cau Thu' voi nhung field nhu sau:
+	- name - chuan hoa (bat buoc nhap)
+	- tuoi (bat buoc nhap)
+	- dia chi
+	- so dien thoai
+	- clb_id - lien ket voi clb (chi duoc chon cau lac bo co trang thai 'dang hoat dong')
+	- tao giao dien tree view, form view cho 'Cau Thu'
+	- lo_dao_tao_ids (ds cac lo dao tao cau thu da trai qua)
+	- luong -> viet ham get default -> neu cau thu trai qua 2 'Lo Dao Tao' thi mac dinh luong tu '15.000.000', nguoc lai luong = '10.000.000'
+	- thue thu nhap ca nhan: tinh tu dong, neu luong hon 10tr thi thue bang 10% luong
+	- trang thai: tu do, da thuoc bien che (mac dinh la: 'tu do', khi tao hoac sua cau thu ma co chon clb thi se sua thanh 'da thuoc bien che')
+	
+3. Tao moi doi tuong 'Lo Dao Tao' voi nhung field nhu sau:
+	- name - chuan hoa (bat buoc nhap)
+	- dia chi (bat buoc nhap)
+	- cau_thu_ids (ds cau thu da qua dao tao o day)
+	- tao tree view, form view cho 'Lo Dao Tao'
+
+4. Tao group 'manager' co quyen doc,them,sua,xoa 'CLB', 'Cau Thu', 'Lo Dao Tao'
+  Tao group 'user' chi co quyen doc 'CLB', 'Cau Thu', 'Lo Dao Tao'
+	
+	

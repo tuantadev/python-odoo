@@ -1,4 +1,4 @@
-<?xml version = "1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <odoo>
     <data>
         <record id="student_tree_view" model="ir.ui.view">
@@ -7,7 +7,7 @@
             <field name="arch" type="xml">
                 <tree string="Student">
                     <field name="name"/>
-                    <field name="age"/>
+                    <field name="address"/>
                     <field name="phone"/>
                     <field name="dob"/>
                 </tree>
@@ -21,16 +21,17 @@
                 <form string="Student">
                     <sheet>
                         <group>
-                            <field name="name"/>
-                            <field name="phone"/>
-                        </group>
-                        <group>
-                            <field name="address"/>
-                            <field name="gender"/>
-                        </group>
-                        <group>
-                            <field name="address"/>
-                            <field name="gender"/>
+                            <group>
+                                <field name="name"/>
+                                <field name="phone" required="1"/>
+                                <field name="exam"/>
+                                <field name="dob" />
+                            </group>
+                            <group>
+                                <field name="address"/>
+                                <field name="gender"/>
+                                <field name="input_date" readonly="1"/>
+                            </group>
                         </group>
                     </sheet>
                 </form>
@@ -44,7 +45,6 @@
             <field name="view_mode">tree,form</field>
         </record>
 
-<!--        menu cap to nhat-->
         <menuitem id="student_menu_parent" name="Student" sequence="1"/>
 
         <menuitem id="student_menu_child" name="Student" parent="student_menu_parent"

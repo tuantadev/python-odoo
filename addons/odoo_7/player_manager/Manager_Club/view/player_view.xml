@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="player_tree_view" model="ir.ui.view">
+            <field name="name">Player Tree View</field>
+            <field name="model">player</field>
+            <field name="arch" type="xml">
+                <tree string="player">
+                    <field name="name"/>
+                    <field name="age"/>
+                    <field name="address"/>
+                    <field name="club_id"/>
+                    <field name="phone"/>
+                    <field name="p_income_tax"/>
+                    <field name="salary"/>
+                    <field name="state_player"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="player_form_view" model="ir.ui.view">
+            <field name="name">Player</field>
+            <field name="model">player</field>
+            <field name="arch" type="xml">
+                <form string="player">
+                    <sheet>
+                        <group>
+                            <field name="name"/>
+                            <field name="age"/>
+                            <field name="address"/>
+
+                        </group>
+                        <group>
+                            <field name="club_id"  />
+                            <field name="phone"/>
+                            <field name="p_income_tax"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="player_action" model="ir.actions.act_window">
+            <field name="name">Player</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">player</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <menuitem id="player_menu_parent" name="Player" sequence="2"/>
+<!--            groups = "Story_Manager.group_order_manager"-->
+
+        <menuitem id="player_menu_child" name="Player" parent="player_menu_parent"
+                  action="player_action" sequence="1"/>
+    </data>
+</odoo>

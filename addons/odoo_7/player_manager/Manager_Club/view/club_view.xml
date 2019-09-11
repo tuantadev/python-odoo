@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="order_tree_view" model="ir.ui.view">
+            <field name="name">Club Tree View</field>
+            <field name="model">club</field>
+            <field name="arch" type="xml">
+                <tree string="Club">
+                    <field name="name"/>
+                    <field name="founder_year"/>
+                    <field name="address"/>
+                    <field name="num_player" />
+                    <field name="coach" />
+                    <field name="club_status" />
+                </tree>
+            </field>
+        </record>
+        <record id="clb_form_view" model="ir.ui.view">
+            <field name="name">Club</field>
+            <field name="model">club</field>
+            <field name="arch" type="xml">
+                <form string="club">
+                    <header>
+                        <button name="validate_club" string="Trang thai cua clb" type="object"  />
+                        <field name="club_status" widget="statusbar" statusbar_visible="act,disso" nolabel="1" readonly="1" />
+                    </header>
+                    <sheet>
+                        <group>
+                            <field name="name"/>
+                            <field name="founder_year"/>
+                            <field name="address"/>
+                            <field name="num_player" />
+                            <field name="coach" />
+                        </group>
+                        <notebook>
+                            <page name="player" string="Players">
+                                <field name="player_ids">
+                                    <tree>
+                                        <field name="name"/>
+                                        <field name="age"/>
+                                        <field name="phone"/>
+                                        <field name="salary"/>
+                                    </tree>
+                                </field>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <record id="club_action" model="ir.actions.act_window">
+            <field name="name">Club</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">club</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <menuitem id="club_menu_parent" name="Club" sequence="2"/>
+<!--            groups = "Story_Manager.group_order_manager"-->
+
+        <menuitem id="club_menu_child" name="Club" parent="club_menu_parent"
+                  action="club_action" sequence="1"/>
+    </data>
+</odoo>

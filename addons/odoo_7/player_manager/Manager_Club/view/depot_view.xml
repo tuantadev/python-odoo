@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data>
+        <record id="depot_tree_view" model="ir.ui.view">
+            <field name="name">Depot</field>
+            <field name="model">depot</field>
+            <field name="arch" type="xml">
+                <tree string="depot">
+                    <field name="name"/>
+                    <field name="address"/>
+                    <field name="player_ids"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="depot_action" model="ir.actions.act_window">
+            <field name="name">Depot</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">depot</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <menuitem id="depot_menu_parent" name="Depot" sequence="2"/>
+
+
+        <menuitem id="depot_menu_child" name="Depot" parent="depot_menu_parent"
+                  action="depot_action" sequence="1"/>
+    </data>
+</odoo>

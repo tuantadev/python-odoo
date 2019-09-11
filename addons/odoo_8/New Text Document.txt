@@ -1,0 +1,33 @@
+** Phan tich nhom 1 **
+model:
+_sinhvien(masv,ten,tuoi,dienthoai,email, khoahoc)  (lophoc_ids many2many,monhoc_ids)
+		//_khoahoc(makhoa,nambatdau,namketthuc)    (
+		_lophoc(malop,sv,tenlop) (sv_ids many2many)
+		_monhoc(mamh,tenmonhoc,tinchi)   (lophoc_ids)
+	
+	
+	+sinhvien hoc nhieu lop , 1 lop co nhieu sv
+	+sinh vien hoc nhieu mon , 1 mon co nhieu sv
+	+1 mon hoc co nhieu lop  ,1 lop co 1 mon hoc
+	+sinh vien co 1 khoa hoc,  khoa hoc co nhieu sv
+
+
+** Phan tich nhom 2 **
+# Bai 2:
+Viet module quan ly sinh vien (ten, tuoi, dienthoai, email, mon_hoc, lop_hoc, khoa_hoc, nam_nhap_hoc, nam_tot_nghiep)
+Sinh vien duoc phep hoc nhieu lop, nhieu mon hoc (tin chi)
+
+# Class:
+SinhVien (masv, ten, tuoi, dienthoai, email, mon_hoc, lop_hoc, khoa_hoc, nam_nhap_hoc, nam_tot_nghiep)
+MonHoc (ma_monhoc, ten_monhoc, lop_id)
+LopHoc (ma_lop, ten_lop, gio_hoc, monhoc_id, sinhvien_id)
+
+msv('lop_hoc', 'sinhvien_id')
+msv('lop_hoc', 'lop_id')
+lop_id ('mon_hoc','sinhvien_id')
+sinhvien_id('lop_hoc')
+
+
+SinhVien.masv many2one LopHoc.lop_id
+SinhVien.masv many2many MonHoc.monhoc_id
+MonHoc.ma_monhoc many2one LopHoc.

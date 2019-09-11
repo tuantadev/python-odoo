@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="club_action" model="ir.actions.act_window">
+            <field name="name">Câu Lạc Bộ</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">club</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+              <p class="oe_view_nocontent_create">
+                <h1><b>Xin mời tạo @@</b></h1>
+              </p>
+            </field>
+        </record>
+
+        <record id="club_form_view" model="ir.ui.view">
+            <field name="name">Câu lạc bộ</field>
+            <field name="model">club</field>
+            <field name="arch" type="xml">
+                <form string="Club">
+                    <header>
+                        <button name="giai_the" string="Giải thể" type="object"/>
+                        <field name="state" widget="statusbar" statusbar_visible="dhd,gt" nolabel="1" readonly="1" />
+                    </header>
+                    <sheet>
+                        <group>
+                            <field name="name"/>
+                            <field name="address"/>
+                            <field name="state"/>
+                            <field name="hlv"/>
+                        </group>
+                        <notebook>
+                            <page string="Cầu thủ">
+                                <field name="player_ids" domain="[('state', '=', 'tudo')]" readonly="1">
+                                    <tree editable="bottom">
+                                        <field name="name"/>
+                                        <field name="address"/>
+                                        <field name="phone"/>
+                                        <field name="gender" />
+                                    </tree>
+                                </field>
+                            </page>
+
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!-- This Menu Item must have a parent and an action -->
+
+        <menuitem id="club_menu" name="club"  />
+
+        <menuitem id="club_menu_view" name="club" parent="club_menu" action="club_action" />
+
+
+
+
+
+    </data>
+</odoo>

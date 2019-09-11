@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="class_tree_view" model="ir.ui.view">
+            <field name="name">Class Tree View</field>
+            <field name="model">class.class</field>
+            <field name="arch" type="xml">
+                <tree string="Class">
+                    <field name="code"/>
+                    <field name="name"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="class_form_view" model="ir.ui.view">
+            <field name="name">Class Form View</field>
+            <field name="model">class.class</field>
+            <field name="arch" type="xml">
+                <form string="Class">
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="code" required="1"/>
+                                <field name="name" required="1"/>
+                            </group>
+                        </group>
+                        <notebook>
+                            <page name="students" string="Students">
+                                <group>
+                                    <field name="student_ids" widget="many2many_tags"/>
+                                </group>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="class_action" model="ir.actions.act_window">
+            <field name="name">Class</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">class.class</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <menuitem id="class_menu_id" parent="student_mangement_menu_id"
+                  name="Class" sequence="2" action="class_action"/>
+    </data>
+</odoo>

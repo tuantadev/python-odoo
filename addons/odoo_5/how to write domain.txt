@@ -1,0 +1,72 @@
+---------- cach viet domain odoo de hieu nhat --------------
+(1) Bắt đầu với toán tử ngoài cùng và di chuyển nó đến điểm bắt đầu của biểu thức.
+"(A operator B)"  becomes  "operator (A B)"
+
+
+(2) Lặp lại bước 1 cho mỗi biểu thức con với toán tử để di chuyển.
+"A operator (B operator C)"  becomes  "operator A (B operator C)"  then "operator A (operator B C)"
+
+
+(3) Hủy bỏ tất cả các dấu ngoặc.
+"A operator (B operator C)"  becomes  "operator A operator B C"
+
+
+Vì vậy, ví dụ của tôi:
+( A or B ) AND ( C or D or E )
+
+
+Đơn giản hóa đầu tiên:
+AND ( A or B ) ( C or D or E )
+
+
+bên trái
+AND ( or A B ) ( C or D or E )
+
+
+bên phải bên ngoài
+AND ( or A B ) ( or C ( D or E ) )
+
+
+bên phải bên trong
+AND ( or A B ) ( or C ( or D E ) )
+
+
+xóa dấu ngoặc
+AND or A B or C or D E
+
+
+
+*) BAI TAP
+them field is_customer vao bang customer voi gia tri default=True
+them field is_vendor vao ban customer voi gia tri default=False
+o form order chi hien thi danh sach customer co gia tri is_customer = True va is_vendor = False
+
+loc san pham tren form order voi gia tri 'price' > 15.000
+
+
+Send x2many as parametr to onchange metod. It will have list of records as following: [[Mode, Option, {'field_name':field_value_record1, ...}], [Mode, Option, {'field_name':field_value_record2, ...}]]
+
+Combination of Mode, Options and Fields Values define state of x2many records.
+
+(0, 0, { values }) link to a new record that needs to be created with the given values dictionary
+
+(1, ID, { values }) update the linked record with id = ID (write values on it)
+
+(2, ID) remove and delete the linked record with id = ID (calls unlink on ID, that will delete the object completely, and the link to it as well)
+
+(3, ID) 
+cut the link to the linked record with id = ID (delete the relationship between the two objects but does not delete the target object itself)
+
+(4, ID) link to existing record with id = ID (adds a relationship)
+
+(5) 
+unlink all (like using (3,ID) for all linked records)
+
+(6, 0, [IDs]) 
+replace the list of linked IDs (like using (5) then (4,ID) for each ID in the list of IDs)
+
+For example: [4,5,False] - define existing records in DB with id=5
+
+[0,0,{'name':'new record'} - define new record with field "name"="new record", that will be created in DB, when holder of x2many will be saved to DB.
+
+

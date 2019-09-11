@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record model="ir.ui.view" id="res_partner_comment_wizard">
+            <field name="name">Add Comment For Partner</field>
+            <field name="model">res.partner.comment</field>
+            <field name="arch" type="xml">
+                <form string="Add Comment For Partner">
+                    <group>
+                        <field name="comment"/>
+                    </group>
+                    <footer>
+                        <button string="Ok"
+                            name="add_comment" type="object" class="btn-primary"/>
+                        <button string="Cancel" class="btn-default" special="cancel" />
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+        <record id="action_res_partner_comment_wizard" model="ir.actions.act_window">
+            <field name="name">Add Comment For Partner</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">res.partner.comment</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+        </record>
+
+        <!-- Inherit Form View to Modify it -->
+        <record id="view_partner_form_inherit" model="ir.ui.view">
+            <field name="name">Add Button</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_partner_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//form/sheet" position="before">
+                    <header>
+                        <button name="%(order_manager.action_res_partner_comment_wizard)d"
+                                string="Add Comment" class="oe_highlight" type="action"/>
+                    </header>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>

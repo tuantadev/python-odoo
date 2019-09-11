@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="view_partner_form_inherit" model="ir.ui.view">
+            <field name="name">Add gender field</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_partner_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//label[@for='phone']" position="before">
+                    <field name="gender" string="Gioi Tinh"/>
+                    <field name="member_code"/>
+                </xpath>
+<!--                <xpath expr="//field[@name='email']" position="attributes">-->
+<!--                    <attribute name="invisible">1</attribute>-->
+<!--                </xpath>-->
+                <xpath expr="//field[@name='email']" position="attributes">
+                    <attribute name="attrs">{'invisible': [('phone', '=', False)]}</attribute>
+                </xpath>
+                <xpath expr="//field[@name='lang']" position="attributes">
+                    <attribute name="string">Ngon ngu</attribute>
+                </xpath>
+                <xpath expr="//notebook" position="inside">
+                    <page string="Xpath more">
+
+                    </page>
+                </xpath>
+            </field>
+        </record>
+
+        <record id="view_partner_tree_inherit" model="ir.ui.view">
+            <field name="name">Add gender field</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_partner_tree"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='email']" position="after">
+                    <field name="gender" string="Gioi Tinh"/>
+                    <field name="fax"/>
+                </xpath>
+            </field>
+        </record>
+
+        <menuitem id="sale.res_partner_menu" name="Khach Hang"
+            parent="sale.sale_order_menu"
+            action="base.action_partner_form"
+            sequence="0" groups="sales_team.group_sale_salesman"/>
+    </data>
+</odoo>

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="point_tree_view" model="ir.ui.view">
+            <field name="name">Point Tree View</field>
+            <field name="model">points</field>
+            <field name="arch" type="xml">
+                <tree string="Point">
+                    <field name="student_id"/>
+                    <field name="subject_id"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="point_form_view" model="ir.ui.view">
+            <field name="name">Point Form View</field>
+            <field name="model">points</field>
+            <field name="arch" type="xml">
+                <form string="Points">
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="student_id" required="1"/>
+                                <field name="subject_id" required="1"/>
+                                <field name="point" required='1'/>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="point_action" model="ir.actions.act_window">
+            <field name="name">Points</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">points</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <menuitem id="point_menu_id" parent="student_mangement_menu_id"
+                  name="Points" sequence="4" action="point_action"/>
+    </data>
+</odoo>

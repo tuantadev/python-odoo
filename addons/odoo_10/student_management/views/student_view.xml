@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="student_tree_view" model="ir.ui.view">
+            <field name="name">Student Tree View</field>
+            <field name="model">student</field>
+            <field name="arch" type="xml">
+                <tree string="Student">
+                    <field name="code"/>
+                    <field name="name"/>
+                    <field name="dob"/>
+                    <field name="phone"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="student_form_view" model="ir.ui.view">
+            <field name="name">Student Form View</field>
+            <field name="model">student</field>
+            <field name="arch" type="xml">
+                <form string="Student">
+                    <header>
+                        <field name="state" widget="statusbar" statusbar_visible="enroll,progress,graduate"/>
+                    </header>
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="code" />
+                                <field name="name" required="1"/>
+                            </group>
+                            <group>
+                                <field name="dob"/>
+                                <field name="phone"/>
+                            </group>
+                            <group>
+                                <field name="class_class_ids" widget="many2many_tags"/>
+                                <field name="subject_ids" widget="many2many_tags"/>
+                            </group>
+                        </group>
+                        <notebook>
+                            <page name="points" string="Points">
+                                <field name="point_ids" readonly="1">
+                                    <tree>
+                                        <field name="display_name"/>
+                                        <field name="subject_id"/>
+                                    </tree>
+                                </field>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="student_action" model="ir.actions.act_window">
+            <field name="name">Students</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">student</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <menuitem id="student_mangement_menu_id" name="Mangement Student" sequence="1"/>
+
+        <menuitem id="student_menu_id" parent="student_mangement_menu_id"
+                  name="Students" sequence="4" action="student_action"/>
+    </data>
+</odoo>

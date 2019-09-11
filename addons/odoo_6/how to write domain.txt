@@ -1,0 +1,42 @@
+---------- cach viet domain odoo de hieu nhat --------------
+(1) Bắt đầu với toán tử ngoài cùng và di chuyển nó đến điểm bắt đầu của biểu thức.
+"(A operator B)"  becomes  "operator (A B)"
+
+
+(2) Lặp lại bước 1 cho mỗi biểu thức con với toán tử để di chuyển.
+"A operator (B operator C)"  becomes  "operator A (B operator C)"  then "operator A (operator B C)"
+
+
+(3) Hủy bỏ tất cả các dấu ngoặc.
+"A operator (B operator C)"  becomes  "operator A operator B C"
+
+
+Vì vậy, ví dụ của tôi:
+( A or B ) AND ( C or D or E )
+
+
+Đơn giản hóa đầu tiên:
+AND ( A or B ) ( C or D or E )
+
+
+bên trái
+AND ( or A B ) ( C or D or E )
+
+
+bên phải bên ngoài
+AND ( or A B ) ( or C ( D or E ) )
+
+
+bên phải bên trong
+AND ( or A B ) ( or C ( or D E ) )
+
+
+xóa dấu ngoặc
+AND or A B or C or D E
+
+
+
+*) BAI TAP
+them field is_customer vao bang customer voi gia tri default=True
+them field is_vendor vao ban customer voi gia tri default=False
+o form order chi hien thi danh sach customer co gia tri is_customer = True va is_vendor = False

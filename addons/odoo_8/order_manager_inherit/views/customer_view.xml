@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="customer_tree_view_inherit" model="ir.ui.view">
+            <field name="name">Customer Tree View</field>
+            <field name="model">customer</field>
+            <field name="inherit_id" ref="order_manager.customer_tree_view"/>
+            <field name="arch" type="xml">
+<!--                <xpath expr="//tree" position="inside">-->
+<!--                    <field name="total_purchased_amount"/>-->
+<!--                </xpath>-->
+                <xpath expr="//field[@name='is_vendor']" position="after">
+                    <field name="total_purchased_amount"/>
+                </xpath>
+            </field>
+        </record>
+
+        <record id="customer_form_view_inherit" model="ir.ui.view">
+            <field name="name">Customer</field>
+            <field name="model">customer</field>
+            <field name="inherit_id" ref="order_manager.customer_form_view"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='is_vendor']" position="after">
+                    <field name="total_purchased_amount"/>
+                </xpath>
+            </field>
+        </record>
+
+    </data>
+</odoo>
